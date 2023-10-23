@@ -1,0 +1,70 @@
+exclude: 'django_svelte_jsoneditor/static|django_svelte_jsoneditor/templates|build|node_modules|.git/|.tox|staticfiles|static_files|media_files|((?:[^/]*/)*)(.svg)|((?:[^/]*/)*)(.xml)'
+default_stages: [commit]
+fail_fast: true
+default_language_version:
+  python: python3 # force all unspecified python hooks to run python3
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v3.1.0
+    hooks:
+      - id: check-added-large-files
+        args: ['--maxkb=10240']
+      - id: check-yaml
+      - id: end-of-file-fixer
+      - id: no-commit-to-branch
+      - id: trailing-whitespace
+
+  - repo: https://gitlab.com/bmares/check-json5
+    rev: v1.0.0
+    hooks:
+      - id: check-json5
+
+  - repo: https://github.com/psf/black
+    rev: 22.10.0
+    hooks:
+      - id: black
+        args: ['--line-length', '120']
+
+  - repo: https://github.com/pycqa/flake8
+    rev: 6.0.0
+    hooks:
+      - id: flake8
+        args: ['--config=setup.cfg']
+        language_version: python3
+
+  - repo: https://github.com/pycqa/isort
+    rev: 5.11.5
+    hooks:
+      - id: isort
+
+  - repo: https://github.com/windpioneers/pre-commit-hooks
+    rev: 0.0.5
+    hooks:
+      - id: check-branch-name
+        args:
+          - '^main$'
+          - '^([a-z][a-z0-9#]*)(-[a-z0-9#]+)*$'
+
+  - repo: https://github.com/pre-commit/mirrors-prettier
+    rev: 'v2.2.1'
+    hooks:
+      - id: prettier
+        additional_dependencies:
+          - 'prettier@2.2.1'
+          - 'prettier-plugin-tailwindcss@0.2.6'
+
+  - repo: https://github.com/octue/pre-commit-hooks
+    rev: 0.9.0
+    hooks:
+      - id: check-commit-message-is-conventional
+        stages: [commit-msg]
+
+  - repo: https://github.com/thclark/pre-commit-sphinx
+    rev: 0.0.1
+    hooks:
+      - id: build-docs
+        language_version: python3
+        # Use dev dependencies to install sphinx, as well as installing
+        # the root module (required for autodoc)
+        additional_dependencies:
+          - 'django_svelte_jsoneditor@file://localhost/workspace#egg=django_svelte_jsoneditor'

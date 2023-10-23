@@ -1,0 +1,10 @@
+.cache
+.next
+dist
+.pytest_cache
+**__pycache__
+node_modules
+package-lock.json
+yarn.lock
+poetry.lock
+.coverage
