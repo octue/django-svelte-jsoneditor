@@ -1,0 +1,65 @@
+version: '3.8'
+
+# Developers:
+#
+#  This file is under version control; changes made here will affect everyone.
+#  If you need to customise just for yourself, add your personal overrides to docker-compose.developer.yml
+#
+services:
+  web:
+    build:
+      context: ..
+      dockerfile: .devcontainer/Dockerfile
+      args:
+        VARIANT: '3.9'
+        INSTALL_NODE: 'true'
+        NODE_VERSION: 'lts/*'
+
+    environment:
+      - DATABASE_URL=postgres://postgres_user:postgres_password@localhost/postgres_db
+      - DJANGO_SETTINGS_MODULE=tests.server.settings
+      - DATABASE_ENGINE=postgres
+
+    # Map the current directory containing code
+    volumes:
+      - ..:/workspace:cached
+
+    # Overrides default command so things don't shut down after the process ends
+    command: sleep infinity
+
+    # Runs app on the same network as the database container, allows "forwardPorts" in devcontainer.json function to include 5432
+    # Use "forwardPorts" in **devcontainer.json** to forward an app port locally, because adding the "ports" property to this
+    # file will not forward from a Codespace.
+    network_mode: service:db
+
+    # Use the non-root user for all processes
+    user: vscode
+
+    # Enable use of a ptrace-based debugger like C++, Go, and Rust or a profiler like Austin
+    cap_add:
+      - SYS_PTRACE
+    security_opt:
+      - seccomp:unconfined
+
+    # Ensure the database is started so that test commands and django server can start
+    depends_on:
+      - db
+
+  db:
+    image: postgres:13.0
+    environment:
+      - POSTGRES_DB=postgres_db
+      - POSTGRES_USER=postgres_user
+      - POSTGRES_PASSWORD=postgres_password
+    volumes:
+      - postgres_data:/var/lib/postgresql
+    restart: unless-stopped
+    healthcheck:
+      test: ['CMD-SHELL', 'pg_isready -U postgres']
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  postgres_data:
+    driver: local
