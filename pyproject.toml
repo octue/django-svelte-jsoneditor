@@ -1,0 +1,49 @@
+[tool.poetry]
+name = "django-svelte-jsoneditor"
+version = "0.1.0"
+description = "A widget for django's JSONField using the latest-and-greatest Json Editor"
+authors = ["Tom Clark <tom@octue.com>"]
+license = "MIT"
+readme = "README.md"
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Intended Audience :: Developers",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Operating System :: OS Independent",
+]
+repository = "https://github.com/octue/django-svelte-jsoneditor"
+keywords = ["django", "json", "editor", "svelte", "jsoneditor", "field", "widget"]
+packages = [{ include = "django_svelte_jsoneditor" },]
+
+[tool.poetry.dependencies]
+django = ">=3.0,<5"
+python = "^3.9"
+
+[tool.poetry.group.dev.dependencies]
+coverage = "^6.2"
+django-debug-toolbar = "^3.8.1"
+django-extensions = "^3.2.0"
+django-test-migrations = "^1.2.0"
+pre-commit = "^2.17.0"
+psycopg2-binary = "^2.9.3"
+pylint-django = "^2.5.3"
+pytest = "^7.0.0"
+pytest-asyncio = "^0.17.2"
+pytest-cov = "^4.0.0"
+pytest-django = "^4.5.2"
+pytest-sugar = "^0.9.4"
+sphinx-rtd-theme = "^1.0.0"
+sphinx-tabs = "^3.2.0"
+Sphinx = "^4.4.0"
+tox = "^3.24.5"
+tox-gh-actions = "^2.9.1"
+tox-poetry = "^0.4.1"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
