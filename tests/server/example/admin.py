@@ -1,8 +1,8 @@
 from django.contrib import admin
 
 from tests.server.example.models import (
-    ExampleJsonFieldModel,
     ExampleBlankJsonFieldModel,
+    ExampleJsonFieldModel,
     ExampleUneditableJsonFieldModel,
 )
 

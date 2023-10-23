@@ -18,10 +18,10 @@ jobs:
       - name: Publish latest package to PyPI
         uses: JRubics/poetry-publish@v1.16
         with:
-          python_version: "3.9"
-          poetry_version: "==1.4.2" # (PIP version specifier syntax)
+          python_version: '3.9'
+          poetry_version: '==1.4.2' # (PIP version specifier syntax)
           pypi_token: ${{ secrets.PYPI_TOKEN }}
-          ignore_dev_requirements: "yes"
+          ignore_dev_requirements: 'yes'
 
   release:
     # This job will only run if the PR has been merged (and not closed without merging).

@@ -5,6 +5,7 @@
 
 from django.contrib.auth.models import User
 from django.test import Client, TestCase
+
 from tests.server.example.models import ExampleBlankJsonFieldModel, ExampleJsonFieldModel
 from ._utils import get_admin_add_view_url, get_admin_change_view_url
 
@@ -35,10 +36,12 @@ class TestJsonFieldAdmin(TestCase):
         self.assertEqual(response.status_code, 200)
 
         # Assert the widget contents
-        widget = response.context_data["adminform"].fields["blob"].widget
+        # widget = response.context_data["adminform"].fields["blob"].widget
         # self.assertTrue(hasattr(widget, "signed_ingress_url"))
         # self.assertTrue(
         #     widget.signed_ingress_url.startswith("https://storage.googleapis.com/example-media-assets/_tmp")
         # )
 
-
+    def test_blank_add_view_loads_normally(self):
+        response = self.client.get(get_admin_add_view_url(ExampleBlankJsonFieldModel))
+        self.assertEqual(response.status_code, 200)
