@@ -1,0 +1,12 @@
+name: update-pull-request
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  update-pull-request:
+    uses: octue/.github/.github/workflows/reusable-update-pull-request.yml@main
+    secrets:
+      token: ${{ secrets.GITHUB_TOKEN }}
