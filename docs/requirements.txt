@@ -1,0 +1,12 @@
+
+# Required by the python script for building documentation
+
+# NOTE!!!
+#
+# If you alter these, you must also alter the dependencies in .pre-commit-config.yaml because
+# frustratingly, pre-commit can't be pointed to a file.
+
+Sphinx>=4,<5
+sphinx-rtd-theme==1.0.0
+sphinx-tabs==3.2.0
+sphinx-math-dollar==1.2.0

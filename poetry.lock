@@ -1393,6 +1393,16 @@ docs = ["furo (>=2023.7.26)", "proselint (>=0.13)", "sphinx (>=7.1.2)", "sphinx-
 test = ["covdefaults (>=2.3)", "coverage (>=7.2.7)", "coverage-enable-subprocess (>=1)", "flaky (>=3.7)", "packaging (>=23.1)", "pytest (>=7.4)", "pytest-env (>=0.8.2)", "pytest-freezer (>=0.4.8)", "pytest-mock (>=3.11.1)", "pytest-randomly (>=3.12)", "pytest-timeout (>=2.1)", "setuptools (>=68)", "time-machine (>=2.10)"]
 
 [[package]]
+name = "watch"
+version = "0.2.7"
+description = "A stupid monadic fields tracker."
+optional = false
+python-versions = "*"
+files = [
+    {file = "watch-0.2.7.tar.gz", hash = "sha256:d51f3648091c031e08d0cf0f3177da884078f25538a9d8dc568693ab5ac2dee0"},
+]
+
+[[package]]
 name = "zipp"
 version = "3.17.0"
 description = "Backport of pathlib-compatible object wrapper for zip files"
@@ -1410,4 +1420,4 @@ testing = ["big-O", "jaraco.functools", "jaraco.itertools", "more-itertools", "p
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.9"
-content-hash = "0bf63814dac42892445795cd458d766ddbc35413d0a5d367bd2bacc7deb555df"
+content-hash = "5ab0bbb12311ffc02a4e8f40293326e4849a3e1432d61ef09d66951cd331bffd"
