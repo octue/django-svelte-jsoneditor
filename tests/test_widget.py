@@ -29,7 +29,8 @@ class TestJsonFieldAdmin(TestCase):
     def test_change_view_loads_normally(self):
         """Ensure we can load a change view"""
 
-        obj = ExampleJsonFieldModel.objects.create()
+        obj = ExampleJsonFieldModel(my_json={"one": "two"})
+        obj.save()
 
         # Assert that the view loads
         response = self.client.get(get_admin_change_view_url(obj))

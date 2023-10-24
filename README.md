@@ -25,6 +25,9 @@ python manage.py createsuperuser
 # (then enter user details for yourself)
 python manage.py runserver
 # (then go to the localhost address in your browser)
+# (and in another terminal...)
+pytest
+# (this should run all tests and have them pass)
 ```
 
 You'll find this takes you to the django admin where you have several example models registered, each of which use slightly different options on the json field, so you can see how the widget behaves.
