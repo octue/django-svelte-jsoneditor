@@ -1,9 +1,8 @@
 .. ATTENTION::
     This library is used for a few apps in production, but it is still early in development.
     Like the idea of it? Please
-    `star us on GitHub <https://github.com/octue/django-gcp>`_ and contribute via the
-    `issues board <https://github.com/octue/django-gcp/issues>`_ and
-    `roadmap <https://github.com/octue/django-gcp/projects/1>`_.
+    `star us on GitHub <https://github.com/octue/django-svelte-jsoneditor>`_ and contribute via the
+    `issues board <https://github.com/octue/django-svelte-jsoneditor/issues>`_.
 
 =========================
 Django Svelte JSON Editor
