@@ -1,3 +1,5 @@
+name: cd
+
 # Only trigger when a pull request into main branch is merged
 on:
   pull_request:
@@ -9,7 +11,7 @@ on:
 jobs:
   publish:
     # This job will only run if the PR has been merged (and not closed without merging).
-    if: "github.event.pull_request.merged == true"
+    if: 'github.event.pull_request.merged == true'
     permissions:
       id-token: write
       contents: read
