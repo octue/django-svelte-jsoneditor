@@ -6,7 +6,7 @@ The field is built using Jos deJong's new [svelte-jsoneditor](https://github.com
 
 ## Documentation...
 
-[...is here.](TODO)
+(working on it)
 
 ## About Svelte
 
@@ -17,3 +17,17 @@ You don't need to know or care. It's the JavaScript framework used to develop th
 This is a replacement for `django-jsoneditor` (which uses the older `jsoneditor` - you can [see the differences here](https://github.com/josdejong/svelte-jsoneditor#differences-between-josdejongsvelte-jsoneditor-and-josdejongjsoneditor).
 
 You can [read about why we're not simply updating `django-jsoneditor` here](https://github.com/nnseva/django-jsoneditor/issues/71
+
+### Developing
+
+To get started with developing `django-svelte-jsoneditor`, fork the repo then open an environment in the devcontainer (the easiest way is to use GitHub codespaces or VSCode remote containers), then type:
+
+```
+python manage.py migrate
+python manage.py createsuperuser
+# (then enter user details for yourself)
+python manage.py runserver
+# (then go to the localhost address in your browser)
+```
+
+You'll find this takes you to the django admin where you have several example models registered, each of which use slightly different options on the json field, so you can see how the widget behaves.
