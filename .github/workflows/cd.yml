@@ -9,21 +9,20 @@ on:
 jobs:
   publish:
     # This job will only run if the PR has been merged (and not closed without merging).
-    if: "github.event.pull_request.merged == true && !contains(github.event.pull_request.head.message, 'skipci')"
+    if: "github.event.pull_request.merged == true"
+    permissions:
+      id-token: write
+      contents: read
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: Set up Python
-        uses: actions/setup-python@v2
-        with:
-          python-version: 3.9
+      - name: Install Poetry
+        uses: snok/install-poetry@v1.3.2
 
-      - name: Make package
-        run: |
-          python3 -m pip install --upgrade setuptools wheel
-          python3 setup.py sdist bdist_wheel
+      - name: Build a binary wheel and a source tarball
+        run: poetry build
 
       - name: Publish package distributions to PyPI
         uses: pypa/gh-action-pypi-publish@v1.8.10
