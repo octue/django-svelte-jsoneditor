@@ -15,13 +15,20 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: Publish latest package to PyPI
-        uses: JRubics/poetry-publish@v1.16
+      - name: Set up Python
+        uses: actions/setup-python@v2
         with:
-          python_version: '3.9'
-          poetry_version: '==1.4.2' # (PIP version specifier syntax)
-          pypi_token: ${{ secrets.PYPI_TOKEN }}
-          ignore_dev_requirements: 'yes'
+          python-version: 3.9
+
+      - name: Make package
+        run: |
+          python3 -m pip install --upgrade setuptools wheel
+          python3 setup.py sdist bdist_wheel
+
+      - name: Publish package distributions to PyPI
+        uses: pypa/gh-action-pypi-publish@v1.8.10
+        with:
+          verbose: true
 
   release:
     # This job will only run if the PR has been merged (and not closed without merging).
