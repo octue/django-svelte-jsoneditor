@@ -3,7 +3,7 @@
 
 # django-svelte-jsoneditor
 
-A JSONField for django allowing manipulation and display of json data. The field is built using Jos deJong's new [svelte-jsoneditor](https://github.com/josdejong/svelte-jsoneditor).
+A plug in widget for django's JSONField that allows manipulation and display of JSON data. The widget is built using Jos deJong's new [svelte-jsoneditor](https://github.com/josdejong/svelte-jsoneditor).
 
 This app is a replacement for `django-jsoneditor` (which uses a deprecated version of the widget, `jsoneditor` - you can [see the differences here](https://github.com/josdejong/svelte-jsoneditor#differences-between-josdejongsvelte-jsoneditor-and-josdejongjsoneditor)).
 
