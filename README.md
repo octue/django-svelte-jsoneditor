@@ -33,3 +33,5 @@ pytest
 ```
 
 You'll find this takes you to the django admin where you have several example models registered, each of which use slightly different options on the json field, so you can see how the widget behaves.
+
+**On the subject of commit messages**. It's helpful if you use the following [conventional commit codes](https://github.com/octue/conventional-commits#default-allowed-commit-codes) because then the PR and release notes get generated automatically!
