@@ -43,3 +43,18 @@ class ExampleUneditableJsonFieldModel(Model):
         """Metaclass defining this model to reside in the example app"""
 
         app_label = "example"
+
+
+class ExampleMultipleJsonFieldModel(Model):
+    """
+    Multiple JSON fields in one model to test correct behaviour of JavaScript
+    """
+
+    my_json1 = JSONField()
+    my_json2 = JSONField()
+    my_json3 = JSONField()
+
+    class Meta:
+        """Metaclass defining this model to reside in the example app"""
+
+        app_label = "example"
