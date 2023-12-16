@@ -9,9 +9,54 @@ A plug in widget for django's JSONField that allows manipulation and display of 
 
 This app is a replacement for `django-jsoneditor` (which uses a deprecated version of the widget, `jsoneditor` - you can [see the differences here](https://github.com/josdejong/svelte-jsoneditor#differences-between-josdejongsvelte-jsoneditor-and-josdejongjsoneditor)). You can read about why we're not directly contributing to `django-jsoneditor` [here](https://github.com/nnseva/django-jsoneditor/issues/71), the two projects might merge in the future.
 
-## Documentation...
+## Documentation
 
-(working on it)
+### Installation
+
+To get an application installed in your project, you need to add `django_svelte_jsoneditor` into `INSTALLED_APPS` in `settings.py` file.
+
+```python
+# settings.py
+
+INSTALLED_APPS = [
+    # Other Django applications
+    "django_svelte_jsoneditor",
+]
+```
+
+### Usage
+
+The application contains new widget called `SvelteJSONEditorWidget` which adds editor capabilities to JSON fields in Django. Below you can see an example, of how to override the default widget for the JSON field (in this case textarea widget).
+
+```python
+# admin.py
+
+from django.contrib import admin
+from django_svelte_jsoneditor.widgets import SvelteJSONEditorWidget
+
+from .models import MyModel
+
+
+@admin.register(MyModel)
+class MyModelAdmin(admin.ModelAdmin):
+    formfield_overrides = {
+        models.JSONField: {
+            "widget": SvelteJSONEditorWidget,
+        }
+    }
+```
+
+Another example is how to create a new Django form integrating `SvelteJSONEditorWidget` replacing `Textarea` widget.
+
+```python
+# forms.py
+from django import forms
+from django_svelte_jsoneditor.widgets import SvelteJSONEditorWidget
+
+
+class MyJSONEditorForm(forms.Form):
+    json = forms.JSONField(widgets=SvelteJSONEditorWidget())
+```
 
 ## About Svelte
 

@@ -1,0 +1,22 @@
+{% load static %}
+
+<div id="jsoneditor_{{ widget.attrs.id }}" class="svelte-jsoneditor-wrapper"></div>
+
+<textarea name="{{ widget.name }}"{% include "django/forms/widgets/attrs.html" %}>{% if widget.value %}{{ widget.value }}{% endif %}</textarea>
+
+<script type="module">    
+  import { JSONEditor } from '{% static "django_svelte_jsoneditor/js/svelte_jsoneditor.js" %}'
+  
+  const json = JSON.parse(document.getElementById('{{ widget.attrs.id }}').value)
+  const editor = new JSONEditor({
+    target: document.getElementById('jsoneditor_{{ widget.attrs.id }}'),
+    props: {
+        content: {
+            json: json || undefined,
+        },        
+        onChange: (updatedContent, previousContent, { contentErrors, patchResult }) => {
+            document.getElementById('{{ widget.attrs.id }}').value = JSON.stringify(updatedContent.json)        
+        }
+    }
+  })
+</script>

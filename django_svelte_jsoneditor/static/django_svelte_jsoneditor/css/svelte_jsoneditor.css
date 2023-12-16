@@ -1,0 +1,23 @@
+.svelte-jsoneditor-wrapper {
+    min-height: 480px;
+    width: 640px;
+}
+
+.jse-modal tr:nth-child(2n+1),
+.jse-modal tr:nth-child(2n) {
+    background-color: inherit;
+    border-bottom: inherit;
+}
+
+table.jse-transform-wizard tr:nth-child(2n) {
+    background-color: inherit;
+}
+
+.jse-modal td, 
+.jse-modal th {
+    background-color: inherit;
+    border-bottom: inherit;
+    font-size: inherit;
+    line-height: inherit;
+    vertical-align: inherit;
+}
