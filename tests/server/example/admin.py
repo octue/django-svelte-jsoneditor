@@ -5,8 +5,8 @@ from django_svelte_jsoneditor.widgets import SvelteJSONEditorWidget
 from tests.server.example.models import (
     ExampleBlankJsonFieldModel,
     ExampleJsonFieldModel,
-    ExampleUneditableJsonFieldModel,
     ExampleMultipleJsonFieldModel,
+    ExampleUneditableJsonFieldModel,
 )
 
 
@@ -44,7 +44,5 @@ class ExampleMultipleJsonFieldModelAdmin(admin.ModelAdmin):
 
 admin.site.register(ExampleJsonFieldModel, ExampleJsonFieldModelAdmin)
 admin.site.register(ExampleBlankJsonFieldModel, ExampleBlankJsonFieldModelAdmin)
-admin.site.register(
-    ExampleUneditableJsonFieldModel, ExampleUneditableJsonFieldModelAdmin
-)
+admin.site.register(ExampleUneditableJsonFieldModel, ExampleUneditableJsonFieldModelAdmin)
 admin.site.register(ExampleMultipleJsonFieldModel, ExampleMultipleJsonFieldModelAdmin)

@@ -94,7 +94,6 @@ SVELTE_JSONEDITOR = {
 | escapeControlCharacters | boolean                     | False   |
 | flattenColumns          | boolean                     | True    |
 
-
 ### Widget properties
 
 `SvelteJSONEditorWidget` has additional argument called `props` which allows to override `SVELTE_JSONEDITOR` settings from settings.py.
@@ -110,7 +109,6 @@ class SvelteJsonEditorForm(forms.Form):
         "readOnly": True
     }))
 ```
-
 
 #### Custom widget properties in admin form
 
@@ -139,7 +137,7 @@ class ExampleModelAdmin(admin.ModelAdmin):
         models.JSONField: {
             "widget": SvelteJSONEditorWidget,
         }
-    }        
+    }
 ```
 
 ## About Svelte

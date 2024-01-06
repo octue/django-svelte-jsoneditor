@@ -7,22 +7,17 @@ from django import forms
 from django.contrib.auth.models import User
 from django.test import Client, TestCase
 from django.test.utils import override_settings
-
-from tests.server.example.models import (
-    ExampleBlankJsonFieldModel,
-    ExampleJsonFieldModel,
-)
-from ._utils import get_admin_add_view_url, get_admin_change_view_url
 from django_svelte_jsoneditor.widgets import SvelteJSONEditorWidget
+
+from tests.server.example.models import ExampleBlankJsonFieldModel, ExampleJsonFieldModel
+from ._utils import get_admin_add_view_url, get_admin_change_view_url
 
 
 class BaseTestCase(TestCase):
     @classmethod
     def setUpTestData(cls):
         """Set up data for the whole test case (used within the outer transaction to increase speed)"""
-        User.objects.create_superuser(
-            username="superuser", password="secret", email="admin@example.com"
-        )
+        User.objects.create_superuser(username="superuser", password="secret", email="admin@example.com")
 
     def setUp(self, *args, **kwargs):
         """Log in the superuser"""
@@ -83,9 +78,7 @@ class TestSvelteJsonEditorWidget(TestCase):
 
     def test_svelte_jsoneditor_widget_custom_props(self):
         class SvelteJsonEditorForm(forms.Form):
-            my_json = forms.JSONField(
-                widget=SvelteJSONEditorWidget(props={"readOnly": True})
-            )
+            my_json = forms.JSONField(widget=SvelteJSONEditorWidget(props={"readOnly": True}))
 
         form = SvelteJsonEditorForm()
 
@@ -102,9 +95,7 @@ class TestSvelteJsonEditorWidget(TestCase):
     @override_settings(SVELTE_JSONEDITOR={**{"PROPS": {"readOnly": True}}})
     def test_svelte_jsoneditor_widget_overridden_props(self):
         class SvelteJsonEditorForm(forms.Form):
-            my_json = forms.JSONField(
-                widget=SvelteJSONEditorWidget(props={"readOnly": False})
-            )
+            my_json = forms.JSONField(widget=SvelteJSONEditorWidget(props={"readOnly": False}))
 
         form = SvelteJsonEditorForm()
         self.assertIn('"readOnly": false', str(form["my_json"]))
