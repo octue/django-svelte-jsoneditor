@@ -58,6 +58,88 @@ class MyJSONEditorForm(forms.Form):
     json = forms.JSONField(widgets=SvelteJSONEditorWidget())
 ```
 
+### Global settings
+
+The application allows modifying some properties of svelte-jsoneditor inside the settings.py configuration file in Django. Official documentation is available on [svelte-jsoneditor](https://github.com/josdejong/svelte-jsoneditor#properties) GitHub page. **Note:** Not all options are configurable which are provided by svelte-jsoneditor.
+
+```python
+# settings.py
+
+SVELTE_JSONEDITOR = {
+    "mode": "tree",
+    "mainMenuBar": True,
+    "navigationBar": True,
+    "statusBar": True,
+    "askToFormat": True,
+    "readOnly": False,
+    "indentations": 4,
+    "tabSize": 4,
+    "escapeControlCharacters": False,
+    "flattenColumns": True,
+}
+```
+
+#### Available properties
+
+| Property                | Type                        | Default |
+| ----------------------- | --------------------------- | ------- |
+| mode                    | 'tree' or 'text' or 'table' | 'tree'  |
+| mainMenuBar             | boolean                     | True    |
+| navigationBar           | boolean                     | True    |
+| statusBar               | boolean                     | True    |
+| askToFormat             | boolean                     | True    |
+| readOnly                | boolean                     | False   |
+| indentations            | number or string            | 4       |
+| tabSize                 | number                      | 4       |
+| escapeControlCharacters | boolean                     | False   |
+| flattenColumns          | boolean                     | True    |
+
+### Widget properties
+
+`SvelteJSONEditorWidget` has additional argument called `props` which allows to override `SVELTE_JSONEDITOR` settings from settings.py.
+
+```python
+# forms.py
+
+from django import forms
+
+
+class SvelteJsonEditorForm(forms.Form):
+    my_json = forms.JSONField(widget=SvelteJSONEditorWidget(props={
+        "readOnly": True
+    }))
+```
+
+#### Custom widget properties in admin form
+
+```python
+# admin.py
+
+from django import forms
+from django.contrib import admin
+
+from .models import ExampleModel
+
+class CustomForm(forms.ModelForm):
+    class Meta:
+        model = ExampleModel
+        fields = "__all__"
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields["some_json_field"].widget = SvelteJSONEditorWidget(props={"readOnly": True})
+
+
+@admin.register(ExampleModel, ExampleModelAdmin)
+class ExampleModelAdmin(admin.ModelAdmin):
+    form = CustomForm
+    formfield_overrides = {
+        models.JSONField: {
+            "widget": SvelteJSONEditorWidget,
+        }
+    }
+```
+
 ## About Svelte
 
 **You don't need to know or care.** It's the JavaScript framework used to develop the widget - but the widget JS is all pre-built so there are no extra requirements.

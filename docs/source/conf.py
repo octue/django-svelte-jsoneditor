@@ -166,4 +166,4 @@ html_show_sphinx = False
 html_show_copyright = True
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = "django_gcp_doc"
+htmlhelp_basename = "django_svelte_jsoneditor_doc"

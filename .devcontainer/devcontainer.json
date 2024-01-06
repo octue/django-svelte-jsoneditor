@@ -72,7 +72,8 @@
         "trond-snekvik.simple-rst",
         "ms-azuretools.vscode-docker",
         "ryanluker.vscode-coverage-gutters",
-        "ms-python.black-formatter"
+        "ms-python.black-formatter",
+        "GitHub.copilot"
       ]
     }
   },

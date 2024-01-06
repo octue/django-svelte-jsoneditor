@@ -5,8 +5,8 @@ from django_svelte_jsoneditor.widgets import SvelteJSONEditorWidget
 from tests.server.example.models import (
     ExampleBlankJsonFieldModel,
     ExampleJsonFieldModel,
-    ExampleUneditableJsonFieldModel,
     ExampleMultipleJsonFieldModel,
+    ExampleUneditableJsonFieldModel,
 )
 
 
