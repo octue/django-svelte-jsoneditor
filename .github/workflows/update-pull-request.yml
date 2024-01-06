@@ -6,7 +6,10 @@ on:
       - main
 
 jobs:
-  update-pull-request:
-    uses: octue/.github/.github/workflows/reusable-update-pull-request.yml@main
+  generate-pull-request-description:
+    uses: octue/workflows/.github/workflows/generate-pull-request-description.yml@main
     secrets:
       token: ${{ secrets.GITHUB_TOKEN }}
+    permissions:
+      contents: read
+      pull-requests: write
