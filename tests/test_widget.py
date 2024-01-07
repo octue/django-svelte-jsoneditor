@@ -7,6 +7,7 @@ from django import forms
 from django.contrib.auth.models import User
 from django.test import Client, TestCase
 from django.test.utils import override_settings
+from django_svelte_jsoneditor.exceptions import InvalidPropError
 from django_svelte_jsoneditor.widgets import SvelteJSONEditorWidget
 
 from tests.server.example.models import ExampleBlankJsonFieldModel, ExampleJsonFieldModel
@@ -99,3 +100,15 @@ class TestSvelteJsonEditorWidget(TestCase):
 
         form = SvelteJsonEditorForm()
         self.assertIn('"readOnly": false', str(form["my_json"]))
+
+    @override_settings(SVELTE_JSONEDITOR_PROPS={**{"incorrectProp": True}})
+    def test_svelte_jsoneditor_widget_incorrect_props(self):
+
+        # for props at the widget level
+        with self.assertRaises(InvalidPropError):
+            SvelteJSONEditorWidget(props={"incorrectProp": True})
+
+        # for props in settings
+        with self.assertRaises(InvalidPropError):
+            widget = SvelteJSONEditorWidget()
+            widget.get_context("my_json", "null", {"required": True, "id": "id_my_json"})

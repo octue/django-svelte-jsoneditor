@@ -1,7 +1,7 @@
 import json
 from django.forms import Textarea
 
-from .settings import get_props
+from .settings import check_props, get_props
 
 
 class SvelteJSONEditorWidget(Textarea):
@@ -12,6 +12,7 @@ class SvelteJSONEditorWidget(Textarea):
             attrs = {}
 
         self.props = {} if props is None else props.copy()
+        check_props(self.props)
         attrs.update({"class": "hidden"})
 
         super().__init__(attrs)

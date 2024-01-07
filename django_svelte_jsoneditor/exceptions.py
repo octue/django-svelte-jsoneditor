@@ -1,2 +1,2 @@
-class ExampleError(Exception):
-    """Example for custom exception definition"""
+class InvalidPropError(ValueError):
+    """Raised when props are incorrectly configured"""
