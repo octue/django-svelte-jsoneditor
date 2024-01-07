@@ -1,26 +1,23 @@
 from django.conf import settings
 
 
-CONFIG_DEFAULTS = {
-    "PROPS": {
-        "mode": "tree",
-        "mainMenuBar": True,
-        "navigationBar": True,
-        "statusBar": True,
-        "askToFormat": True,
-        "readOnly": False,
-        "indentations": 4,
-        "tabSize": 4,
-        "escapeControlCharacters": False,
-        "flattenColumns": True,
-    }
+DEFAULT_SVELTE_JSONEDITOR_PROPS = {
+    "mode": "tree",
+    "mainMenuBar": True,
+    "navigationBar": True,
+    "statusBar": True,
+    "askToFormat": True,
+    "readOnly": False,
+    "indentations": 4,
+    "tabSize": 4,
+    "escapeControlCharacters": False,
+    "flattenColumns": True,
 }
 
 
-def get_config():
+def get_props():
+    """Get default props overridden by any props set in the SVELTE_JSONEDITOR_PROPS setting"""
     return {
-        "PROPS": {
-            **CONFIG_DEFAULTS["PROPS"],
-            **getattr(settings, "SVELTE_JSONEDITOR", {}).get("PROPS", {}),
-        }
+        **DEFAULT_SVELTE_JSONEDITOR_PROPS,
+        **getattr(settings, "SVELTE_JSONEDITOR_PROPS", {}),
     }

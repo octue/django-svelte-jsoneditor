@@ -59,7 +59,7 @@ class TestSvelteJsonEditorAdmin(BaseTestCase):
         response = self.client.get(get_admin_change_view_url(obj))
         self.assertContains(response, '"readOnly": false')
 
-    @override_settings(SVELTE_JSONEDITOR={**{"PROPS": {"readOnly": True}}})
+    @override_settings(SVELTE_JSONEDITOR_PROPS={**{"readOnly": True}})
     def test_change_view_modified_global_settings(self):
         obj = ExampleJsonFieldModel(my_json={"one": "two"})
         obj.save()
@@ -84,7 +84,7 @@ class TestSvelteJsonEditorWidget(TestCase):
 
         self.assertIn('"readOnly": true', str(form["my_json"]))
 
-    @override_settings(SVELTE_JSONEDITOR={**{"PROPS": {"readOnly": True}}})
+    @override_settings(SVELTE_JSONEDITOR_PROPS={**{"readOnly": True}})
     def test_svelte_jsoneditor_widget_global_props(self):
         class SvelteJsonEditorForm(forms.Form):
             my_json = forms.JSONField(widget=SvelteJSONEditorWidget())

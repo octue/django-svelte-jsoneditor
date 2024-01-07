@@ -66,7 +66,7 @@ The application allows modifying some properties of svelte-jsoneditor inside the
 ```python
 # settings.py
 
-SVELTE_JSONEDITOR = {
+SVELTE_JSONEDITOR_PROPS = {
     "mode": "tree",
     "mainMenuBar": True,
     "navigationBar": True,
