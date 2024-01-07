@@ -92,7 +92,7 @@ class TestSvelteJsonEditorWidget(TestCase):
         form = SvelteJsonEditorForm()
         self.assertIn('"readOnly": true', str(form["my_json"]))
 
-    @override_settings(SVELTE_JSONEDITOR={**{"PROPS": {"readOnly": True}}})
+    @override_settings(SVELTE_JSONEDITOR_PROPS={**{"readOnly": True}})
     def test_svelte_jsoneditor_widget_overridden_props(self):
         class SvelteJsonEditorForm(forms.Form):
             my_json = forms.JSONField(widget=SvelteJSONEditorWidget(props={"readOnly": False}))
