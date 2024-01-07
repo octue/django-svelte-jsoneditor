@@ -76,6 +76,7 @@ SVELTE_JSONEDITOR_PROPS = {
     "indentation": 4,
     "tabSize": 4,
     "escapeControlCharacters": False,
+    "escapeUnicodeCharacters": False,
     "flattenColumns": True,
 }
 ```
@@ -93,6 +94,7 @@ SVELTE_JSONEDITOR_PROPS = {
 | indentation             | number or string            | 4       |
 | tabSize                 | number                      | 4       |
 | escapeControlCharacters | boolean                     | False   |
+| escapeUnicodeCharacters | boolean                     | False   |
 | flattenColumns          | boolean                     | True    |
 
 ### Widget properties

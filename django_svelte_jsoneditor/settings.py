@@ -11,6 +11,7 @@ DEFAULT_SVELTE_JSONEDITOR_PROPS = {
     "indentation": 4,
     "tabSize": 4,
     "escapeControlCharacters": False,
+    "escapeUnicodeCharacters": False,
     "flattenColumns": True,
 }
 
