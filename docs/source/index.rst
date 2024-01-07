@@ -8,7 +8,7 @@
 Django Svelte JSON Editor
 =========================
 
-``django-svelte-jsoneditor`` is a widget allowing you to use Jos deJong's `svelte-jsoneditor <https://github.com/josdejong/svelte-jsoneditor>`_ as a widget for django JSONFields.
+``django-svelte-jsoneditor`` is a for django's JSONField that allows manipulation and display of JSON data. The widget is built using Jos deJong's new `svelte-jsoneditor <https://github.com/josdejong/svelte-jsoneditor>`_.
 
 .. |pic1| image:: images/jsoneditor_tree_mode.png
    :width: 49%
@@ -20,6 +20,11 @@ Django Svelte JSON Editor
 
 |pic1| |pic2|
 
+This app is a replacement for ``django-jsoneditor`` (which uses a deprecated version of the widget, ``jsoneditor`` - you can `see the differences here <https://github.com/josdejong/svelte-jsoneditor#differences-between-josdejongsvelte-jsoneditor-and-josdejongjsoneditor>`_.
+
+You can read about why this isn't a part of the ``django-jsoneditor`` project `here <https://github.com/nnseva/django-jsoneditor/issues/71>`_, although it's our preference that the two projects merge in the future to avoid fragmentation.
+
+
 Contents
 ========
 
@@ -27,8 +32,12 @@ Contents
    :maxdepth: 2
 
    getting_started
+   editor_properties
+   settings
+   contributing
    license
    version_history
+
 
 Thanks
 ======

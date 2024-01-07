@@ -79,7 +79,7 @@
   },
 
   // Use 'forwardPorts' to make a list of ports inside the container available locally.
-  "forwardPorts": [80, 443, 5000, 7045, 7046, 7047, 7048, 7049, 8000, 8080],
+  "forwardPorts": [80, 443, 5500, 8000],
 
   // Use 'postCreateCommand' to run commands after the container is created.
   // Note: Reverting to use pip requirements until we can install private dependencies in GHA with poetry
