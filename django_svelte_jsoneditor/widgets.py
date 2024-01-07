@@ -1,7 +1,7 @@
 import json
 from django.forms import Textarea
 
-from .settings import get_config
+from .settings import check_props, get_props
 
 
 class SvelteJSONEditorWidget(Textarea):
@@ -12,13 +12,14 @@ class SvelteJSONEditorWidget(Textarea):
             attrs = {}
 
         self.props = {} if props is None else props.copy()
+        check_props(self.props)
         attrs.update({"class": "hidden"})
 
         super().__init__(attrs)
 
     def get_context(self, name, value, attrs):
         context = super().get_context(name, value, attrs)
-        context["widget"].update({"props": json.dumps({**get_config()["PROPS"], **self.props})})
+        context["widget"].update({"props": json.dumps({**get_props(), **self.props})})
         return context
 
     class Media:
