@@ -8,7 +8,7 @@ DEFAULT_SVELTE_JSONEDITOR_PROPS = {
     "statusBar": True,
     "askToFormat": True,
     "readOnly": False,
-    "indentations": 4,
+    "indentation": 4,
     "tabSize": 4,
     "escapeControlCharacters": False,
     "flattenColumns": True,

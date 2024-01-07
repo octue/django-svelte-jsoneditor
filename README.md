@@ -73,7 +73,7 @@ SVELTE_JSONEDITOR_PROPS = {
     "statusBar": True,
     "askToFormat": True,
     "readOnly": False,
-    "indentations": 4,
+    "indentation": 4,
     "tabSize": 4,
     "escapeControlCharacters": False,
     "flattenColumns": True,
@@ -90,7 +90,7 @@ SVELTE_JSONEDITOR_PROPS = {
 | statusBar               | boolean                     | True    |
 | askToFormat             | boolean                     | True    |
 | readOnly                | boolean                     | False   |
-| indentations            | number or string            | 4       |
+| indentation             | number or string            | 4       |
 | tabSize                 | number                      | 4       |
 | escapeControlCharacters | boolean                     | False   |
 | flattenColumns          | boolean                     | True    |
