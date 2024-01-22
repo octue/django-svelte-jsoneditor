@@ -81,9 +81,11 @@
   // Use 'forwardPorts' to make a list of ports inside the container available locally.
   "forwardPorts": [80, 443, 5500, 8000],
 
-  // Use 'postCreateCommand' to run commands after the container is created.
-  // Note: Reverting to use pip requirements until we can install private dependencies in GHA with poetry
-  "postCreateCommand": ". .devcontainer/postcreate.sh",
+  // Use 'postAttachCommand' to run commands after the container is created and attached (ie git is available).
+  // This is preferential to postCreateCommand as invoking git (eg for private poetry installs or addition of
+  // git config preferences) doesn't override injected git configs
+  // https://stackoverflow.com/a/73097009/3556110
+  "postAttachCommand": ". .devcontainer/postattach.sh",
 
   // Comment out connect as root instead. More info: https://aka.ms/vscode-remote/containers/non-root.
   "remoteUser": "vscode",
