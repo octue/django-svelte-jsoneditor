@@ -1,6 +1,6 @@
 {% load static %}
 
-<div id="jsoneditor_{{ widget.attrs.id }}" class="svelte-jsoneditor-wrapper"></div>
+<div id="jsoneditor_{{ widget.attrs.id }}" class="{{ widget.wrapper_class }}"></div>
 
 <textarea name="{{ widget.name }}"{% include "django/forms/widgets/attrs.html" %}>{% if widget.value %}{{ widget.value }}{% endif %}</textarea>
 
