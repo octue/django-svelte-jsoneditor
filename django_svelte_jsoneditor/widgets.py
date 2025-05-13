@@ -24,3 +24,12 @@ class SvelteJSONEditorWidget(Textarea):
 
     class Media:
         css = {"all": ("django_svelte_jsoneditor/css/svelte_jsoneditor.css",)}
+
+class ReadOnlySvelteJSONEditorWidget(SvelteJSONEditorWidget):
+    def __init__(self, attrs=None):
+        props = {
+            'mode': 'view',
+            'readOnly': True,
+            'navigationBar': False
+        }
+        super().__init__(props=props, attrs=attrs)
