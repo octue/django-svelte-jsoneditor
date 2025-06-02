@@ -8,7 +8,7 @@ from django.contrib.auth.models import User
 from django.test import Client, TestCase
 from django.test.utils import override_settings
 from django_svelte_jsoneditor.exceptions import InvalidPropError
-from django_svelte_jsoneditor.widgets import SvelteJSONEditorWidget
+from django_svelte_jsoneditor.widgets import SvelteJSONEditorWidget, ReadOnlySvelteJSONEditorWidget
 
 from tests.server.example.models import ExampleBlankJsonFieldModel, ExampleJsonFieldModel
 from ._utils import get_admin_add_view_url, get_admin_change_view_url
@@ -112,3 +112,18 @@ class TestSvelteJsonEditorWidget(TestCase):
         with self.assertRaises(InvalidPropError):
             widget = SvelteJSONEditorWidget()
             widget.get_context("my_json", "null", {"required": True, "id": "id_my_json"})
+
+class TestReadOnlySvelteJSONEditorWidget(TestCase):
+    def test_readonly_widget_default_props(self):
+        """Test that ReadOnlySvelteJSONEditorWidget has the correct default props."""
+        class ReadOnlyJsonEditorForm(forms.Form):
+            my_json = forms.JSONField(widget=ReadOnlySvelteJSONEditorWidget())
+
+        form = ReadOnlyJsonEditorForm()
+        widget_html = str(form["my_json"])
+        
+        # Check that all expected props are set correctly
+        self.assertIn('"mode": "view"', widget_html)
+        self.assertIn('"readOnly": true', widget_html)
+        self.assertIn('"navigationBar": false', widget_html)
+    
