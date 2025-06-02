@@ -1,12 +1,15 @@
 name: release
 
+# Only trigger when a pull request into main branch is merged
 on:
   pull_request:
+    types: [ closed ]
     branches:
       - main
 
 jobs:
   release:
+    if: 'github.event.pull_request.merged == true'
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
